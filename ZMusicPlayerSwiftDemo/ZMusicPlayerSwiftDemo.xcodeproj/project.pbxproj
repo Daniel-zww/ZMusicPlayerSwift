@@ -8,13 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		659EA0111ECE835200403E76 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659EA0101ECE835200403E76 /* AppDelegate.swift */; };
-		659EA0131ECE835200403E76 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659EA0121ECE835200403E76 /* ViewController.swift */; };
 		659EA0161ECE835200403E76 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 659EA0141ECE835200403E76 /* Main.storyboard */; };
 		659EA0191ECE835200403E76 /* ZMusicPlayerSwiftDemo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 659EA0171ECE835200403E76 /* ZMusicPlayerSwiftDemo.xcdatamodeld */; };
 		659EA01B1ECE835200403E76 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 659EA01A1ECE835200403E76 /* Assets.xcassets */; };
 		659EA01E1ECE835200403E76 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 659EA01C1ECE835200403E76 /* LaunchScreen.storyboard */; };
 		659EA0291ECE835200403E76 /* ZMusicPlayerSwiftDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659EA0281ECE835200403E76 /* ZMusicPlayerSwiftDemoTests.swift */; };
 		659EA0341ECE835200403E76 /* ZMusicPlayerSwiftDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659EA0331ECE835200403E76 /* ZMusicPlayerSwiftDemoUITests.swift */; };
+		65C658A51ECEA47200296D42 /* ZNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C658A41ECEA47200296D42 /* ZNavigationController.swift */; };
+		65C658A71ECEA49C00296D42 /* ZMainTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C658A61ECEA49C00296D42 /* ZMainTableViewController.swift */; };
+		CBD2FC234CEC277495DC0341 /* Pods_ZMusicPlayerSwiftDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57908872CA7D7CFC2E91B16D /* Pods_ZMusicPlayerSwiftDemo.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,9 +37,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1964D9D2006F77BB9E5770AD /* Pods-ZMusicPlayerSwiftDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZMusicPlayerSwiftDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZMusicPlayerSwiftDemo/Pods-ZMusicPlayerSwiftDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		55343139A01434F1ED23E74A /* Pods-ZMusicPlayerSwiftDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZMusicPlayerSwiftDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZMusicPlayerSwiftDemo/Pods-ZMusicPlayerSwiftDemo.release.xcconfig"; sourceTree = "<group>"; };
+		57908872CA7D7CFC2E91B16D /* Pods_ZMusicPlayerSwiftDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZMusicPlayerSwiftDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		659EA00D1ECE835200403E76 /* ZMusicPlayerSwiftDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZMusicPlayerSwiftDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		659EA0101ECE835200403E76 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		659EA0121ECE835200403E76 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		659EA0151ECE835200403E76 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		659EA0181ECE835200403E76 /* ZMusicPlayerSwiftDemo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ZMusicPlayerSwiftDemo.xcdatamodel; sourceTree = "<group>"; };
 		659EA01A1ECE835200403E76 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -49,6 +53,8 @@
 		659EA02F1ECE835200403E76 /* ZMusicPlayerSwiftDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZMusicPlayerSwiftDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		659EA0331ECE835200403E76 /* ZMusicPlayerSwiftDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZMusicPlayerSwiftDemoUITests.swift; sourceTree = "<group>"; };
 		659EA0351ECE835200403E76 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		65C658A41ECEA47200296D42 /* ZNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZNavigationController.swift; sourceTree = "<group>"; };
+		65C658A61ECEA49C00296D42 /* ZMainTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZMainTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CBD2FC234CEC277495DC0341 /* Pods_ZMusicPlayerSwiftDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,10 +83,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		284EA3038AEE6E0A7EE9978B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				57908872CA7D7CFC2E91B16D /* Pods_ZMusicPlayerSwiftDemo.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		659EA0041ECE835200403E76 = {
 			isa = PBXGroup;
 			children = (
+				284EA3038AEE6E0A7EE9978B /* Frameworks */,
+				D99BAE61E2E7733B774D1A20 /* Pods */,
 				659EA00E1ECE835200403E76 /* Products */,
+				65C658A31ECEA3C800296D42 /* ZMusicPlayerSwift */,
 				659EA00F1ECE835200403E76 /* ZMusicPlayerSwiftDemo */,
 				659EA0271ECE835200403E76 /* ZMusicPlayerSwiftDemoTests */,
 				659EA0321ECE835200403E76 /* ZMusicPlayerSwiftDemoUITests */,
@@ -104,8 +122,9 @@
 				659EA01F1ECE835200403E76 /* Info.plist */,
 				659EA01C1ECE835200403E76 /* LaunchScreen.storyboard */,
 				659EA0141ECE835200403E76 /* Main.storyboard */,
-				659EA0121ECE835200403E76 /* ViewController.swift */,
+				65C658A61ECEA49C00296D42 /* ZMainTableViewController.swift */,
 				659EA0171ECE835200403E76 /* ZMusicPlayerSwiftDemo.xcdatamodeld */,
+				65C658A41ECEA47200296D42 /* ZNavigationController.swift */,
 			);
 			path = ZMusicPlayerSwiftDemo;
 			sourceTree = "<group>";
@@ -128,6 +147,23 @@
 			path = ZMusicPlayerSwiftDemoUITests;
 			sourceTree = "<group>";
 		};
+		65C658A31ECEA3C800296D42 /* ZMusicPlayerSwift */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ZMusicPlayerSwift;
+			path = ../ZMusicPlayerSwift;
+			sourceTree = "<group>";
+		};
+		D99BAE61E2E7733B774D1A20 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1964D9D2006F77BB9E5770AD /* Pods-ZMusicPlayerSwiftDemo.debug.xcconfig */,
+				55343139A01434F1ED23E74A /* Pods-ZMusicPlayerSwiftDemo.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,9 +171,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 659EA0381ECE835200403E76 /* Build configuration list for PBXNativeTarget "ZMusicPlayerSwiftDemo" */;
 			buildPhases = (
+				B564888973A20A14FADDBBBC /* [CP] Check Pods Manifest.lock */,
 				659EA0091ECE835200403E76 /* Sources */,
 				659EA00A1ECE835200403E76 /* Frameworks */,
 				659EA00B1ECE835200403E76 /* Resources */,
+				09F265C674C852D1A9A99EE7 /* [CP] Embed Pods Frameworks */,
+				65E9C96B5CBF6F3181350614 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -196,7 +235,8 @@
 				TargetAttributes = {
 					659EA00C1ECE835200403E76 = {
 						CreatedOnToolsVersion = 8.3.2;
-						ProvisioningStyle = Automatic;
+						DevelopmentTeam = 5YTH3WKNZJ;
+						ProvisioningStyle = Manual;
 					};
 					659EA0231ECE835200403E76 = {
 						CreatedOnToolsVersion = 8.3.2;
@@ -257,14 +297,63 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		09F265C674C852D1A9A99EE7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ZMusicPlayerSwiftDemo/Pods-ZMusicPlayerSwiftDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		65E9C96B5CBF6F3181350614 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ZMusicPlayerSwiftDemo/Pods-ZMusicPlayerSwiftDemo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B564888973A20A14FADDBBBC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		659EA0091ECE835200403E76 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				659EA0131ECE835200403E76 /* ViewController.swift in Sources */,
+				65C658A51ECEA47200296D42 /* ZNavigationController.swift in Sources */,
 				659EA0191ECE835200403E76 /* ZMusicPlayerSwiftDemo.xcdatamodeld in Sources */,
 				659EA0111ECE835200403E76 /* AppDelegate.swift in Sources */,
+				65C658A71ECEA49C00296D42 /* ZMainTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -416,24 +505,33 @@
 		};
 		659EA0391ECE835200403E76 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1964D9D2006F77BB9E5770AD /* Pods-ZMusicPlayerSwiftDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 5YTH3WKNZJ;
 				INFOPLIST_FILE = ZMusicPlayerSwiftDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.daniel.ZMusicPlayerSwiftDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "c28f3b4d-d6d3-46bc-a3ad-6c9214ba5ee7";
+				PROVISIONING_PROFILE_SPECIFIER = DanielProject_Dev;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		659EA03A1ECE835200403E76 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 55343139A01434F1ED23E74A /* Pods-ZMusicPlayerSwiftDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				DEVELOPMENT_TEAM = 5YTH3WKNZJ;
 				INFOPLIST_FILE = ZMusicPlayerSwiftDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.daniel.ZMusicPlayerSwiftDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "8836fd53-f534-4832-9e1f-7cee4e069038";
+				PROVISIONING_PROFILE_SPECIFIER = DanielProject_Hoc;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -511,6 +609,7 @@
 				659EA03A1ECE835200403E76 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		659EA03B1ECE835200403E76 /* Build configuration list for PBXNativeTarget "ZMusicPlayerSwiftDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -519,6 +618,7 @@
 				659EA03D1ECE835200403E76 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		659EA03E1ECE835200403E76 /* Build configuration list for PBXNativeTarget "ZMusicPlayerSwiftDemoUITests" */ = {
 			isa = XCConfigurationList;
@@ -527,6 +627,7 @@
 				659EA0401ECE835200403E76 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
