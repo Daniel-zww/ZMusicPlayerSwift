@@ -27,21 +27,24 @@ class ZLyricTVC: ZBaseTVC {
     }
     override func innerInit() {
         super.innerInit()
+        self.contentView.backgroundColor = UIColor.clear
         
         self.lbLyric = ZLyricLabel()
-        self.lbLyric?.textColor = UIColor.white
+        self.lbLyric?.textColor = UIColor.blue
         self.lbLyric?.numberOfLines = 1
         self.lbLyric?.lineBreakMode = .byTruncatingTail
         self.lbLyric?.font = UIFont.systemFont(ofSize: 15)
         self.contentView.addSubview(self.lbLyric!)
+        
+        self.setViewFrame()
     }
     func setViewFrame() {
         self.lbLyric?.snp.removeConstraints()
-        self.lbLyric?.snp.makeConstraints({[weak self] (maker) in
+        self.lbLyric?.snp.makeConstraints({[weak self] (make) in
             if self != nil {
-                maker.height.equalTo(self!.lbH)
-                maker.left.right.equalTo(self!.contentView).offset(self!.space)
-                maker.centerY.equalTo(self!.contentView)
+                make.height.equalTo(self!.lbH)
+                make.left.right.equalTo(self!.contentView).offset(self!.space)
+                make.centerY.equalTo(self!.contentView)
             }
         })
     }

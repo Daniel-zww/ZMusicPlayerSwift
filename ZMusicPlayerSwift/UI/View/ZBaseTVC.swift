@@ -17,9 +17,6 @@ class ZBaseTVC: UITableViewCell {
     public var cellW: CGFloat = 0
     public var cellH: CGFloat = 0
     
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-    }
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.innerInit()
@@ -30,16 +27,26 @@ class ZBaseTVC: UITableViewCell {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.innerInit()
+    }
     override func layoutSubviews() {
         super.layoutSubviews()
         
         self.cellW = self.contentView.width
         self.cellH = self.contentView.height
     }
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+    }
     open func innerInit() {
         self.selectionStyle = .none
+        self.accessoryType = .none
         self.backgroundColor = .clear
-        self.contentView.backgroundColor = UIColor.clear
+        self.isUserInteractionEnabled = true
+        self.contentView.backgroundColor = UIColor.white
+        self.contentView.isUserInteractionEnabled = true
     }
 
 }

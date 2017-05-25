@@ -24,6 +24,7 @@ class ZMusicListTVC: ZBaseTVC {
     }
     override func innerInit() {
         super.innerInit()
+        self.contentView.backgroundColor = UIColor.clear
         
         self.viewMain = UIView()
         self.viewMain?.backgroundColor = .clear
@@ -52,42 +53,42 @@ class ZMusicListTVC: ZBaseTVC {
     }
     func setViewFrame() {
         self.viewMain?.snp.removeConstraints()
-        self.viewMain?.snp.makeConstraints({[weak self] (maker) in
+        self.viewMain?.snp.makeConstraints({[weak self] (make) in
             if self != nil {
-                maker.edges.equalTo(self!.contentView).inset(UIEdgeInsets.zero)
+                make.edges.equalTo(self!.contentView).inset(UIEdgeInsets.zero)
             }
         })
         self.imageIcon?.snp.removeConstraints()
-        self.imageIcon?.snp.makeConstraints({[weak self] (maker) in
+        self.imageIcon?.snp.makeConstraints({[weak self] (make) in
             if self != nil {
-                maker.width.height.equalTo(self!.imageSize)
-                maker.top.left.equalTo(self!.viewMain!).offset(self!.space)
+                make.width.height.equalTo(self!.imageSize)
+                make.top.left.equalTo(self!.viewMain!).offset(self!.space)
             }
         })
         self.lbName?.snp.removeConstraints()
-        self.lbName?.snp.makeConstraints({[weak self] (maker) in
+        self.lbName?.snp.makeConstraints({[weak self] (make) in
             if self != nil {
-                maker.height.equalTo(self!.lbH)
-                maker.top.equalTo(self!.viewMain!.snp.top).offset(self!.space)
-                maker.left.equalTo(self!.imageIcon!.snp.right).offset(self!.space)
-                maker.right.equalTo(self!.viewMain!.snp.right).offset(self!.space)
+                make.height.equalTo(self!.lbH)
+                make.top.equalTo(self!.viewMain!.snp.top).offset(self!.space)
+                make.left.equalTo(self!.imageIcon!.snp.right).offset(self!.space)
+                make.right.equalTo(self!.viewMain!.snp.right).offset(self!.space)
             }
         })
         self.lbSinger?.snp.removeConstraints()
-        self.lbSinger?.snp.makeConstraints({[weak self] (maker) in
+        self.lbSinger?.snp.makeConstraints({[weak self] (make) in
             if self != nil {
-                maker.height.equalTo(self!.lbH)
-                maker.top.equalTo(self!.lbName!.snp.bottom).offset(self!.space)
-                maker.left.equalTo(self!.imageIcon!.snp.right).offset(self!.space)
-                maker.right.equalTo(self!.viewMain!.snp.right).offset(self!.space)
+                make.height.equalTo(self!.lbH)
+                make.top.equalTo(self!.lbName!.snp.bottom).offset(self!.space)
+                make.left.equalTo(self!.imageIcon!.snp.right).offset(self!.space)
+                make.right.equalTo(self!.viewMain!.snp.right).offset(self!.space)
             }
         })
         self.imgLine?.snp.removeConstraints()
-        self.imgLine?.snp.makeConstraints({[weak self] (maker) in
+        self.imgLine?.snp.makeConstraints({[weak self] (make) in
             if self != nil {
-                maker.height.equalTo(0.5)
-                maker.left.right.equalTo(self!.viewMain!).offset(0)
-                maker.bottom.equalTo(self!.viewMain!.snp.bottom).offset(0)
+                make.height.equalTo(0.5)
+                make.left.right.equalTo(self!.viewMain!).offset(0)
+                make.bottom.equalTo(self!.viewMain!.snp.bottom).offset(0)
             }
         })
     }

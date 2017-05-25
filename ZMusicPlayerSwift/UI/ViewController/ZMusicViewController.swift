@@ -12,45 +12,47 @@ import UIKit
 class ZMusicViewController: ZBaseViewController {
     
     /// 歌词的占位背景视图引用
-    private var visualEffectView: UIVisualEffectView?
+    var visualEffectView: UIVisualEffectView?
     /// 背景图片
-    private var backImageView: UIImageView?
+    var backImageView: UIImageView?
     /// 顶部
-    private var topView: UIView?
+    var topView: UIView?
     /// 底部
-    private var bottomView: UIView?
+    var bottomView: UIView?
     /// 中间
-    private var middleView: UIView?
+    var middleView: UIView?
     /// 歌词的占位背景视图
-    private var lrcBackView: UIScrollView?
+    var lrcBackView: UIScrollView?
     /// 歌手头像
-    private var iconImageView: UIImageView?
+    var iconImageView: UIImageView?
     /// 歌曲名称
-    private var songNameLabel: UILabel?
+    var songNameLabel: UILabel?
     /// 歌手名称
-    private var singerNameLabel: UILabel?
+    var singerNameLabel: UILabel?
     /// 歌曲总时长
-    private var totalTimeLabel: UILabel?
+    var totalTimeLabel: UILabel?
     /// 播放的歌词
-    private var lrcLabel: ZLyricLabel?
+    var lrcLabel: ZLyricLabel?
     /// 歌曲已经播放的时长
-    private var costTimeLabel: UILabel?
+    var costTimeLabel: UILabel?
     /// 进度条
-    private var progressSlider: UISlider?
+    var progressSlider: UISlider?
     /// 播放暂停按钮
-    private var btnPlayOrPause: UIButton?
+    var btnPlayOrPause: UIButton?
     /// 上一首
-    private var btnPre: UIButton?
+    var btnPre: UIButton?
     /// 下一首
-    private var btnNext: UIButton?
+    var btnNext: UIButton?
     /// 关闭
-    private var btnClose: UIButton?
+    var btnClose: UIButton?
+    /// 分享
+    var btnShare: UIButton?
     /// 显示歌词的VC
-    private var vcLyric: ZLyricViewController?
+    var vcLyric: ZLyricViewController?
     /// 用来刷新界面的timer
-    private var updateTimer: Timer?
+    var updateTimer: Timer?
     /// 负责更新歌词的定时器
-    private var updateLrcLink: CADisplayLink?
+    var updateLrcLink: CADisplayLink?
     /// 单例模式
     public static var sharedInstance: ZMusicViewController {
         struct StaticMusicVC {
@@ -59,63 +61,166 @@ class ZMusicViewController: ZBaseViewController {
         return StaticMusicVC.instance
     }
     deinit {
-        self.visualEffectView = nil
-        self.lrcBackView = nil
-        self.backImageView = nil
-        self.topView = nil
-        self.bottomView = nil
-        self.middleView = nil
-        self.iconImageView = nil
-        self.songNameLabel = nil
-        self.singerNameLabel = nil
-        self.totalTimeLabel = nil
-        self.lrcLabel = nil
-        self.costTimeLabel = nil
-        self.progressSlider = nil
-        self.btnPlayOrPause = nil
-        self.btnPre = nil
-        self.btnNext = nil
-        self.btnClose = nil
-        self.vcLyric = nil
-        self.updateTimer?.invalidate()
-        self.updateTimer = nil
-        self.updateLrcLink?.invalidate()
-        self.updateLrcLink = nil
-    }
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-        
-        self.backImageView?.snp.removeConstraints()
-        self.backImageView?.snp.makeConstraints({[weak self] (maker) in
-            if self != nil {
-                maker.edges.equalTo(self!.view).inset(UIEdgeInsets.zero)
-            }
-        })
-        self.visualEffectView?.snp.removeConstraints()
-        self.visualEffectView?.snp.makeConstraints({[weak self] (maker) in
-            if self != nil {
-                maker.edges.equalTo(self!.view).inset(UIEdgeInsets.zero)
-            }
-        })
+        visualEffectView = nil
+        lrcBackView = nil
+        backImageView = nil
+        topView = nil
+        bottomView = nil
+        middleView = nil
+        iconImageView = nil
+        songNameLabel = nil
+        singerNameLabel = nil
+        totalTimeLabel = nil
+        lrcLabel = nil
+        costTimeLabel = nil
+        progressSlider = nil
+        btnPlayOrPause = nil
+        btnPre = nil
+        btnNext = nil
+        btnClose = nil
+        vcLyric = nil
+        updateTimer?.invalidate()
+        updateTimer = nil
+        updateLrcLink?.invalidate()
+        updateLrcLink = nil
     }
     /// 初始化控件
     override func innerInit() {
         super.innerInit()
         
-        self.backImageView = UIImageView(image: UIImage(named: "dzq.jpg"))
+        self.backImageView = UIImageView(image: UIImage(named: "QQListBack.jpg"))
         self.view.addSubview(self.backImageView!)
         
         self.visualEffectView = UIVisualEffectView()
         self.view.addSubview(self.visualEffectView!)
         
+        self.innerTopView()
+        self.innerMiddleView()
+        self.innerBottomView()
+        self.setViewFrame()
+    }
+    func setViewFrame() {
+        self.backImageView?.snp.removeConstraints()
+        self.backImageView?.snp.makeConstraints({[weak self] (make) in
+            if self != nil {
+                make.edges.equalTo(self!.view).inset(UIEdgeInsets.zero)
+            }
+        })
+        self.visualEffectView?.snp.removeConstraints()
+        self.visualEffectView?.snp.makeConstraints({[weak self] (make) in
+            if self != nil {
+                make.edges.equalTo(self!.view).inset(UIEdgeInsets.zero)
+            }
+        })
+        self.topView?.snp.removeConstraints()
+        self.topView?.snp.makeConstraints({[weak self] (make) in
+            if self != nil {
+                make.height.equalTo(70)
+                make.left.top.right.equalTo(self!.visualEffectView!).offset(0)
+            }
+        })
+        self.bottomView?.snp.removeConstraints()
+        self.bottomView?.snp.makeConstraints({[weak self] (make) in
+            if self != nil {
+                make.height.equalTo(100)
+                make.left.right.equalTo(self!.visualEffectView!).offset(0)
+                make.bottom.equalTo(self!.visualEffectView!.snp.bottom).offset(0)
+            }
+        })
+        self.middleView?.snp.removeConstraints()
+        self.middleView?.snp.makeConstraints({[weak self] (make) in
+            if self != nil {
+                make.left.right.equalTo(self!.visualEffectView!).offset(0)
+                make.top.equalTo(self!.topView!.snp.bottom).offset(0)
+                make.bottom.equalTo(self!.bottomView!.snp.top).offset(0)
+            }
+        })
+        let btnW = 55
+        self.btnClose?.snp.removeConstraints()
+        self.btnClose?.snp.makeConstraints({[weak self] (make) in
+            if self != nil {
+                make.width.equalTo(btnW)
+                make.height.equalTo(40)
+                make.left.equalTo(self!.topView!.snp.left).offset(10)
+                make.top.equalTo(self!.topView!).offset(20)
+            }
+        })
+        self.btnShare?.snp.removeConstraints()
+        self.btnShare?.snp.makeConstraints({[weak self] (make) in
+            if self != nil {
+                make.width.equalTo(btnW)
+                make.height.equalTo(40)
+                make.right.equalTo(self!.topView!.snp.right).offset(-10)
+                make.top.equalTo(self!.topView!).offset(20)
+            }
+        })
+        self.songNameLabel?.snp.removeConstraints()
+        self.songNameLabel?.snp.makeConstraints({[weak self] (make) in
+            if self != nil {
+                make.height.equalTo(25)
+                make.left.equalTo(self!.btnClose!.snp.left).offset(10)
+                make.right.equalTo(self!.btnShare!.snp.right).offset(-10)
+                make.top.equalTo(self!.topView!.snp.top).offset(25)
+            }
+        })
+        self.singerNameLabel?.snp.removeConstraints()
+        self.singerNameLabel?.snp.makeConstraints({[weak self] (make) in
+            if self != nil {
+                make.height.equalTo(20)
+                make.top.equalTo(self!.songNameLabel!.snp.bottom).offset(5)
+                make.left.equalTo(self!.btnClose!.snp.left).offset(10)
+                make.right.equalTo(self!.btnShare!.snp.right).offset(-10)
+            }
+        })
+    }
+
+}
+extension ZMusicViewController {
+    func innerTopView() {
         self.topView = UIView()
         self.visualEffectView?.contentView.addSubview(self.topView!)
         
+        self.btnClose = UIButton(type: UIButtonType.custom)
+        self.btnClose?.setImage(UIImage(named: "btn_back"), for: UIControlState.normal)
+        self.btnClose?.setImage(UIImage(named: "btn_back"), for: UIControlState.highlighted)
+        self.btnClose?.addTarget(self, action: #selector(btnCloseClick), for: UIControlEvents.touchUpInside)
+        self.topView?.addSubview(self.btnClose!)
+        
+        self.btnShare = UIButton(type: UIButtonType.custom)
+        self.btnShare?.setImage(UIImage(named: "more_icon"), for: UIControlState.normal)
+        self.btnShare?.setImage(UIImage(named: "more_icon"), for: UIControlState.highlighted)
+        self.btnShare?.addTarget(self, action: #selector(btnShareClick), for: UIControlEvents.touchUpInside)
+        self.topView?.addSubview(self.btnShare!)
+        
+        self.songNameLabel = UILabel()
+        self.songNameLabel?.textAlignment = .center
+        self.songNameLabel?.textColor = .white
+        self.songNameLabel?.font = UIFont.systemFont(ofSize: 17)
+        self.songNameLabel?.text = "歌曲名称"
+        self.topView?.addSubview(self.songNameLabel!)
+        
+        self.singerNameLabel = UILabel()
+        self.singerNameLabel?.textAlignment = .center
+        self.singerNameLabel?.textColor = .white
+        self.singerNameLabel?.font = UIFont.systemFont(ofSize: 15)
+        self.singerNameLabel?.text = "作者"
+        self.topView?.addSubview(self.singerNameLabel!)
+        
+    }
+    func innerMiddleView() {
         self.middleView = UIView()
         self.visualEffectView?.contentView.addSubview(self.middleView!)
-        
+    }
+    func innerBottomView() {
         self.bottomView = UIView()
         self.visualEffectView?.contentView.addSubview(self.bottomView!)
     }
-
+}
+extension ZMusicViewController {
+    @objc func btnCloseClick() {
+        self.dismiss(animated: true, completion: nil)
+    }
+    @objc func btnShareClick() {
+        debugPrint("点击了分享")
+    }
 }

@@ -45,7 +45,7 @@ class ZLyricViewController: UITableViewController {
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        // 设置tableview内边距, 可以让第一行和最后一行歌词显示到中间位置
+        
         self.tableView.contentInset = UIEdgeInsetsMake(self.tableView.height * 0.5, 0, self.tableView.height * 0.5, 0)
     }
     deinit {
@@ -58,6 +58,8 @@ class ZLyricViewController: UITableViewController {
         self.tableView.separatorInset = UIEdgeInsets.zero
         self.tableView.layoutMargins = UIEdgeInsets.zero
         self.tableView.showsVerticalScrollIndicator = false
+        
+        //self.arrayLyric = ZLyricModelTool.getLyricModels(fileName: "10405520.lrc")
     }
 
     // MARK: - UITableViewDelegate
@@ -69,19 +71,20 @@ class ZLyricViewController: UITableViewController {
         return arrayLyric.count
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellId = "reuseIdentifier"
+        let cellId = "cellReuseIdentifier"
         var cell: ZLyricTVC? = tableView.dequeueReusableCell(withIdentifier: cellId) as? ZLyricTVC
         if cell == nil {
             cell = ZLyricTVC(reuseIdentifier: cellId)
         }
-        let model = self.arrayLyric?[indexPath.row]
-        cell?.setCellData(model: model)
-        if indexPath.row == self.scrollRow {
-            cell?.progress = self.progress
-        } else {
-            cell?.progress = 0
+        if let cell = cell {
+            let model = self.arrayLyric?[indexPath.row]
+            cell.setCellData(model: model)
+            if indexPath.row == self.scrollRow {
+                cell.progress = self.progress
+            } else {
+                cell.progress = 0
+            }
         }
         return cell!
     }
-
 }
