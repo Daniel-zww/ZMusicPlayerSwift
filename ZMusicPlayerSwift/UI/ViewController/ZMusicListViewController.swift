@@ -53,7 +53,11 @@ class ZMusicListViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     func innerData() {
         ZMusicModelTool.loadLocalMusicModelArray { [weak self] (result) in
+            /// 设置局部播放列表
             self?.arrayMusic = result
+            /// 设置全局播放列表
+            ZMusicTool.sharedInstance.arrayMusic = result
+            /// 刷新View
             self?.tvMain?.reloadData()
         }
     }
@@ -81,8 +85,11 @@ class ZMusicListViewController: UIViewController, UITableViewDelegate, UITableVi
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let model = self.arrayMusic?[indexPath.row]
         if let model = model {
-            ZMusicTool.sharedInstance.playMusic(modelMusic: model)
+            // 播放视图
             let itemVC = ZMusicViewController.sharedInstance
+            // 播放音乐
+            ZMusicTool.sharedInstance.playMusic(modelMusic: model)
+            // 跳转到播放界面
             self.present(itemVC, animated: true, completion: nil)
         }
     }

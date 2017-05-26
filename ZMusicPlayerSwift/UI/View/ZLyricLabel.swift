@@ -12,7 +12,7 @@ class ZLyricLabel: UILabel {
 
     /// 播放进度
     var progress: CGFloat = 0 {
-        willSet {
+        didSet {
             self.setNeedsDisplay()
         }
     }
@@ -21,7 +21,7 @@ class ZLyricLabel: UILabel {
         super.draw(rect)
         
         UIColor.green.set()
-        let fillRect = CGRect(x: 0, y: 0, width: rect.size.width * self.progress, height: rect.size.height)
+        let fillRect = CGRect(x: 0, y: 0, width: (rect.size.width * self.progress), height: rect.size.height)
         UIRectFillUsingBlendMode(fillRect, .sourceIn)
     }
 

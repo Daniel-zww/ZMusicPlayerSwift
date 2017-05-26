@@ -15,26 +15,8 @@ class ZMusicTool: NSObject {
     private var audioTool: ZAudioTool {
         return ZAudioTool.sharedInstance
     }
-    private var currentIndex: Int {
-        get {
-            return self.currentIndex
-        }
-        set(newValue) {
-            if let arrayMusic = self.arrayMusic {
-                if (newValue < 0) {
-                    self.currentIndex = arrayMusic.count - 1
-                    return
-                }
-                if newValue > arrayMusic.count - 1 {
-                    self.currentIndex = 0
-                    return
-                }
-                self.currentIndex = newValue
-                return
-            }
-            self.currentIndex = 0
-        }
-    }
+    /// 当前播放索引
+    private var currentIndex: Int = 0
     
     /// 存放的播放列表
     public var arrayMusic: [ZModelMusic]?
@@ -62,6 +44,8 @@ class ZMusicTool: NSObject {
         }
         return StaticMusicTool.instance
     }
+    /// 播放器对象
+    var currentPlayer: AVAudioPlayer?
     /// 重置初始化方法
     override init() {
         super.init()
@@ -72,6 +56,7 @@ class ZMusicTool: NSObject {
      *  @param musicModel 音乐数据模型
      */
     func playMusic(modelMusic: ZModelMusic) {
+        self.currentPlayer = self.audioTool.playAudio(fileName: modelMusic.musicFileName ?? kEmpty)
         let arrayFileName = self.arrayMusic?.valueForKeyPath(field: "musicFileName")
         if let arrayFileName = arrayFileName, let fileName = modelMusic.musicFileName {
             self.currentIndex = arrayFileName.indexOfObject(value: fileName)
@@ -96,6 +81,7 @@ class ZMusicTool: NSObject {
      */
     func nextMusic() {
         self.currentIndex -= 1
+        self.currentIndexChange()
         self.playCurrentMusic()
     }
     /**
@@ -103,7 +89,23 @@ class ZMusicTool: NSObject {
      */
     func preMusic() {
         self.currentIndex += 1
+        self.currentIndexChange()
         self.playCurrentMusic()
+    }
+    /// 验证索引是否有效
+    func currentIndexChange() {
+        if let arrayMusic = self.arrayMusic {
+            if (self.currentIndex < 0) {
+                self.currentIndex = arrayMusic.count - 1
+                return
+            }
+            if self.currentIndex > arrayMusic.count - 1 {
+                self.currentIndex = 0
+                return
+            }
+        } else {
+            self.currentIndex = 0
+        }
     }
     /**
      *  设置播放的进度

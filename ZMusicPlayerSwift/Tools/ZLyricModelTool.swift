@@ -16,7 +16,10 @@ class ZLyricModelTool: NSObject {
      *
      *  @return 歌词数据模型组成的数据
      */
-    public static func getLyricModels(fileName: String) -> [ZModelLyric]? {
+    public static func getLyricModels(fileName: String?) -> [ZModelLyric]? {
+        if fileName == nil {
+            return nil
+        }
         // 获取到歌词文件的路径,如果是网络数据修改成本地沙盒地址
         guard let path = Bundle.main.path(forResource: fileName, ofType: nil) else {
             return nil

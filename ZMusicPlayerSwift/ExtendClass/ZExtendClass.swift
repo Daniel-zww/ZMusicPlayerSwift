@@ -10,7 +10,13 @@ import UIKit
 import Foundation
 import ObjectiveC.runtime
 
+/// 定义空字符串
+public let kEmpty: String = ""
+/// 播放完成通知
 public let kNotificationPlayFinish: NSNotification.Name = NSNotification.Name(rawValue: "kNotificationPlayFinish")
+/// 播放错误通知
+public let kNotificationPlayError: NSNotification.Name = NSNotification.Name(rawValue: "kNotificationPlayError")
+
 
 /// 添加文字在图片的方位
 public enum ZImageTextPosition : Int {
@@ -337,6 +343,12 @@ extension Array {
 /// 扩展NSObject
 extension NSObject {
     
+}
+/// 扩展颜色
+extension UIColor {
+    convenience init(_ r: UInt8, _ g: UInt8 , _ b: UInt8) {
+        self.init(red: CGFloat(r)/255, green: CGFloat(g)/255, blue: CGFloat(b)/255, alpha: 1)
+    }
 }
 
 

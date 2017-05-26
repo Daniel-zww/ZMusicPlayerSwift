@@ -20,8 +20,11 @@ class ZLyricViewController: UITableViewController {
     /// 根据外界传递过来的行号, 负责滚动
     public var scrollRow: Int = 0 {
         didSet {
+            guard let arrayLyric = self.arrayLyric, arrayLyric.count > 0 else {
+                return
+            }
             let indexPath: IndexPath = IndexPath(row: self.scrollRow, section: 0)
-            self.tableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+            self.tableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.fade)
             self.tableView.scrollToRow(at: indexPath, at: UITableViewScrollPosition.top, animated: true)
         }
     }
@@ -76,14 +79,14 @@ class ZLyricViewController: UITableViewController {
         if cell == nil {
             cell = ZLyricTVC(reuseIdentifier: cellId)
         }
-        if let cell = cell {
-            let model = self.arrayLyric?[indexPath.row]
-            cell.setCellData(model: model)
-            if indexPath.row == self.scrollRow {
-                cell.progress = self.progress
-            } else {
-                cell.progress = 0
-            }
+        let model = self.arrayLyric?[indexPath.row]
+        cell?.setCellData(model: model)
+        if indexPath.row == self.scrollRow {
+            cell?.progress = self.progress
+            cell?.setLabelFontSize(size: 18)
+        } else {
+            cell?.progress = 0
+            cell?.setLabelFontSize(size: 15)
         }
         return cell!
     }

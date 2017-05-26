@@ -13,11 +13,6 @@ class ZLyricTVC: ZBaseTVC {
     private var lbLyric: ZLyricLabel?
     public var progress: CGFloat = 0 {
         didSet {
-            if self.progress <= 0 {
-                self.lbLyric?.font = UIFont.systemFont(ofSize: 15)
-            } else {
-                self.lbLyric?.font = UIFont.systemFont(ofSize: 17)
-            }
             self.lbLyric?.progress = self.progress
         }
     }
@@ -30,7 +25,8 @@ class ZLyricTVC: ZBaseTVC {
         self.contentView.backgroundColor = UIColor.clear
         
         self.lbLyric = ZLyricLabel()
-        self.lbLyric?.textColor = UIColor.blue
+        self.lbLyric?.textAlignment = .center
+        self.lbLyric?.textColor = UIColor.white
         self.lbLyric?.numberOfLines = 1
         self.lbLyric?.lineBreakMode = .byTruncatingTail
         self.lbLyric?.font = UIFont.systemFont(ofSize: 15)
@@ -48,11 +44,13 @@ class ZLyricTVC: ZBaseTVC {
             }
         })
     }
+    /// 设置字体大小 
+    func setLabelFontSize(size: CGFloat) {
+        self.lbLyric?.font = UIFont.systemFont(ofSize: size)
+    }
     /// 设置数据模型
     func setCellData(model: ZModelLyric?) {
-        if let model = model {
-            self.lbLyric?.text = model.lyricText
-        }
+        self.lbLyric?.text = model?.lyricText
     }
 
 }

@@ -38,7 +38,7 @@ class ZAudioTool: NSObject, AVAudioPlayerDelegate {
     /**
      *  根据文件名, 播放一首音乐
      *
-     *  @param audioName 文件名
+     *  @param fileName 文件名
      *
      *  @return 当前播放器
      */
@@ -47,18 +47,29 @@ class ZAudioTool: NSObject, AVAudioPlayerDelegate {
         guard let fileURL = Bundle.main.url(forResource: fileName, withExtension: nil) else {
             return nil
         }
+        return self.playAudio(url: fileURL)
+    }
+    /**
+     *  根据文件地址, 播放一首音乐
+     *
+     *  @param url  文件地址
+     *
+     *  @return 当前播放器
+     */
+    func playAudio(url: URL) -> AVAudioPlayer? {
         // 业务逻辑优化, 如果发现, 播放的是当前正在播放的歌曲, 不需要重新创建播放器对象, 直接开始播放就行
-        if self.currentPlayer != nil && self.currentPlayer?.url?.absoluteString == fileURL.absoluteString {
-            self.currentPlayer?.play()
+        if self.currentPlayer != nil && self.currentPlayer?.url?.absoluteString == url.absoluteString {
+            self.startAudio()
             return self.currentPlayer
         }
         do {
             // 根据资源路径, 创建播放器对象
-            try self.currentPlayer = AVAudioPlayer(contentsOf: fileURL)
+            try self.currentPlayer = AVAudioPlayer(contentsOf: url)
             // 设置播放器的代理
             self.currentPlayer?.delegate = self
             // 开始播放
             self.currentPlayer?.prepareToPlay()
+            self.startAudio()
         } catch {
             
         }
@@ -87,7 +98,7 @@ class ZAudioTool: NSObject, AVAudioPlayerDelegate {
     /**
      *  设置当前播放器的播放进度
      *
-     *  @param currentTime 播放时间
+     *  @param currentTime  播放时间
      */
     func seekToTimeInterval(currentTime: TimeInterval) {
         self.currentPlayer?.currentTime = currentTime
@@ -96,14 +107,23 @@ class ZAudioTool: NSObject, AVAudioPlayerDelegate {
     // MARK: - AVAudioPlayerDelegate
     
     /**
-     *  音乐播放完成, 发送通知告诉外界
+     *  音乐播放完成、发送通知告诉外界
      *
-     *  @param player 音乐播放器
-     *  @param flag   是否完成
+     *  @param player   音乐播放器
+     *  @param flag     是否完成
      */
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
         if flag {
             NotificationCenter.default.post(name: kNotificationPlayFinish, object: self.currentPlayer)
         }
+    }
+    /**
+     *  音乐播放错误、发送通知告诉外界
+     *
+     *  @param player   音乐播放器
+     *  @param error    错误信息
+     */
+    func audioPlayerDecodeErrorDidOccur(_ player: AVAudioPlayer, error: Error?) {
+        NotificationCenter.default.post(name: kNotificationPlayError, object: self.currentPlayer)
     }
 }
