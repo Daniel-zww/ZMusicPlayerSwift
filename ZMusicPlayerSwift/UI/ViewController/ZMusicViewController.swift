@@ -107,16 +107,7 @@ class ZMusicViewController: ZBaseViewController, UIScrollViewDelegate {
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         
-        self.vcLyric?.tableView.frame = self.lrcBackView?.bounds ?? CGRect.zero
-        self.vcLyric?.tableView.x = self.lrcBackView?.width ?? 0
-        
-        self.lrcBackView?.contentSize = CGSize(width: (self.lrcBackView?.width ?? 0) * 2, height: 0)
-        
-        // 设置歌手头像为圆形
-        self.iconImageView?.layer.cornerRadius = (self.iconImageView?.width ?? 0) / 2
-        self.iconImageView?.layer.masksToBounds = true
-        self.iconImageView?.layer.borderWidth = 5.0
-        self.iconImageView?.layer.borderColor = UIColor(36, 36, 35).cgColor
+        self.setViewDynamicConstraints()
     }
     /// 初始化控件
     override func innerInit() {
@@ -215,13 +206,8 @@ class ZMusicViewController: ZBaseViewController, UIScrollViewDelegate {
         })
         // MiddleView
         
-        self.iconImageView?.snp.removeConstraints()
-        self.iconImageView?.snp.makeConstraints({[weak self] (make) in
-            if self != nil {
-                make.width.height.equalTo(300)
-                make.center.equalTo(self!.middleView!.snp.center)
-            }
-        })
+        self.setViewDynamicConstraints()
+        
         self.lrcLabel?.snp.removeConstraints()
         self.lrcLabel?.snp.makeConstraints ({[weak self] (make) in
             if self != nil {
@@ -291,6 +277,26 @@ class ZMusicViewController: ZBaseViewController, UIScrollViewDelegate {
                 make.bottom.equalTo(self!.bottomView!.snp.bottom).offset(-20)
             }
         })
+    }
+    /// 设置动态约束
+    func setViewDynamicConstraints() {
+        self.iconImageView?.snp.removeConstraints()
+        self.iconImageView?.snp.makeConstraints({[weak self] (make) in
+            if self != nil {
+                make.width.height.equalTo(self!.middleView!.height / 2)
+                make.center.equalTo(self!.middleView!.snp.center)
+            }
+        })
+        self.vcLyric?.tableView.frame = self.lrcBackView?.bounds ?? CGRect.zero
+        self.vcLyric?.tableView.x = self.lrcBackView?.width ?? 0
+        
+        self.lrcBackView?.contentSize = CGSize(width: (self.lrcBackView?.width ?? 0) * 2, height: 0)
+        
+        // 设置歌手头像为圆形
+        self.iconImageView?.layer.cornerRadius = (self.iconImageView?.width ?? 0) / 2
+        self.iconImageView?.layer.masksToBounds = true
+        self.iconImageView?.layer.borderWidth = 5.0
+        self.iconImageView?.layer.borderColor = UIColor(36, 36, 35).cgColor
     }
 
     // MARK: - UIScrollViewDelegate
