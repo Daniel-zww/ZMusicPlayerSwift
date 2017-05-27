@@ -70,6 +70,8 @@
 		659EA0291ECE835200403E76 /* ZMusicPlayerSwiftDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659EA0281ECE835200403E76 /* ZMusicPlayerSwiftDemoTests.swift */; };
 		659EA0341ECE835200403E76 /* ZMusicPlayerSwiftDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659EA0331ECE835200403E76 /* ZMusicPlayerSwiftDemoUITests.swift */; };
 		65C5E7CE1ED686E9001D30EC /* ZBaseTV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C5E7CD1ED686E9001D30EC /* ZBaseTV.swift */; };
+		65C5E7D01ED95806001D30EC /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65C5E7CF1ED95806001D30EC /* AVKit.framework */; };
+		65C5E7D21ED96578001D30EC /* ZEnumManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C5E7D11ED96578001D30EC /* ZEnumManager.swift */; };
 		65C658A51ECEA47200296D42 /* ZNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C658A41ECEA47200296D42 /* ZNavigationController.swift */; };
 		65C658AF1ECED19300296D42 /* ZModelLyric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C658AE1ECED19300296D42 /* ZModelLyric.swift */; };
 		65C658B11ECED1A000296D42 /* ZModelMusic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C658B01ECED1A000296D42 /* ZModelMusic.swift */; };
@@ -172,6 +174,8 @@
 		659EA0331ECE835200403E76 /* ZMusicPlayerSwiftDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZMusicPlayerSwiftDemoUITests.swift; sourceTree = "<group>"; };
 		659EA0351ECE835200403E76 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		65C5E7CD1ED686E9001D30EC /* ZBaseTV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZBaseTV.swift; sourceTree = "<group>"; };
+		65C5E7CF1ED95806001D30EC /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
+		65C5E7D11ED96578001D30EC /* ZEnumManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZEnumManager.swift; sourceTree = "<group>"; };
 		65C658A41ECEA47200296D42 /* ZNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZNavigationController.swift; sourceTree = "<group>"; };
 		65C658AE1ECED19300296D42 /* ZModelLyric.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZModelLyric.swift; sourceTree = "<group>"; };
 		65C658B01ECED1A000296D42 /* ZModelMusic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZModelMusic.swift; sourceTree = "<group>"; };
@@ -188,6 +192,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65C5E7D01ED95806001D30EC /* AVKit.framework in Frameworks */,
 				65C658C21ECEE82B00296D42 /* CoreGraphics.framework in Frameworks */,
 				65C658C01ECEE20F00296D42 /* Foundation.framework in Frameworks */,
 				65C658BE1ECEE20A00296D42 /* UIKit.framework in Frameworks */,
@@ -216,8 +221,9 @@
 		284EA3038AEE6E0A7EE9978B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				65C658C11ECEE82B00296D42 /* CoreGraphics.framework */,
 				65C658BB1ECEE1F800296D42 /* AVFoundation.framework */,
+				65C5E7CF1ED95806001D30EC /* AVKit.framework */,
+				65C658C11ECEE82B00296D42 /* CoreGraphics.framework */,
 				65C658BF1ECEE20F00296D42 /* Foundation.framework */,
 				57908872CA7D7CFC2E91B16D /* Pods_ZMusicPlayerSwiftDemo.framework */,
 				65C658BD1ECEE20A00296D42 /* UIKit.framework */,
@@ -440,6 +446,7 @@
 			children = (
 				65C658B91ECEE1C100296D42 /* ZExtendClass.swift */,
 				6542253A1ED2D95E00A2C853 /* MJExtension.swift */,
+				65C5E7D11ED96578001D30EC /* ZEnumManager.swift */,
 			);
 			path = ExtendClass;
 			sourceTree = "<group>";
@@ -526,6 +533,11 @@
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = 5YTH3WKNZJ;
 						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					659EA0231ECE835200403E76 = {
 						CreatedOnToolsVersion = 8.3.2;
@@ -694,6 +706,7 @@
 				654224D81ED28E4700A2C853 /* ZMusicTool.swift in Sources */,
 				6542254D1ED4316600A2C853 /* ZBaseTVC.swift in Sources */,
 				65C658AF1ECED19300296D42 /* ZModelLyric.swift in Sources */,
+				65C5E7D21ED96578001D30EC /* ZEnumManager.swift in Sources */,
 				65C5E7CE1ED686E9001D30EC /* ZBaseTV.swift in Sources */,
 				654224D41ED28E1F00A2C853 /* ZLyricModelTool.swift in Sources */,
 				654224DA1ED28E6500A2C853 /* ZMusicModelTool.swift in Sources */,

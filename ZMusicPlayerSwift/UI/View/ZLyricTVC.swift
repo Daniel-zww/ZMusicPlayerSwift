@@ -29,7 +29,7 @@ class ZLyricTVC: ZBaseTVC {
         self.lbLyric?.textColor = UIColor.white
         self.lbLyric?.numberOfLines = 1
         self.lbLyric?.lineBreakMode = .byTruncatingTail
-        self.lbLyric?.font = UIFont.systemFont(ofSize: 15)
+        self.lbLyric?.font = UIFont.systemFont(ofSize: 14)
         self.contentView.addSubview(self.lbLyric!)
         
         self.setViewFrame()

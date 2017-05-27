@@ -20,12 +20,22 @@ class ZLyricViewController: UITableViewController {
     /// 根据外界传递过来的行号, 负责滚动
     public var scrollRow: Int = 0 {
         didSet {
+            if scrollRow == oldValue {
+                return
+            }
             guard let arrayLyric = self.arrayLyric, arrayLyric.count > 0 else {
                 return
             }
-            let indexPath: IndexPath = IndexPath(row: self.scrollRow, section: 0)
-            self.tableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.fade)
-            self.tableView.scrollToRow(at: indexPath, at: UITableViewScrollPosition.top, animated: true)
+            // 新的indexPath
+            let indexPath = IndexPath(row: scrollRow, section: 0)
+            let cell = self.tableView.cellForRow(at: indexPath) as? ZLyricTVC
+            cell?.addAnimation(animationType: .scaleAlways)
+            // 旧的indexPath
+            let oldIndexpath = IndexPath(row: oldValue, section: 0)
+            let oldCell = self.tableView.cellForRow(at: oldIndexpath) as? ZLyricTVC
+            oldCell?.addAnimation(animationType: .scaleNormal)
+            oldCell?.progress = 0
+            self.tableView.scrollToRow(at: indexPath, at: .middle, animated: true)
         }
     }
     /// 根据外界传递过来的歌词进度, 展示歌词进度
@@ -46,8 +56,8 @@ class ZLyricViewController: UITableViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
         
         self.tableView.contentInset = UIEdgeInsetsMake(self.tableView.height * 0.5, 0, self.tableView.height * 0.5, 0)
     }
@@ -56,6 +66,7 @@ class ZLyricViewController: UITableViewController {
     }
     /// 初始化控件
     func innerInit() {
+        self.tableView.rowHeight = 40
         self.tableView.backgroundColor = .clear
         self.tableView.separatorStyle = .none
         self.tableView.separatorInset = UIEdgeInsets.zero
@@ -83,10 +94,10 @@ class ZLyricViewController: UITableViewController {
         cell?.setCellData(model: model)
         if indexPath.row == self.scrollRow {
             cell?.progress = self.progress
-            cell?.setLabelFontSize(size: 18)
+            cell?.addAnimation(animationType: .scaleAlways)
         } else {
+            cell?.addAnimation(animationType: .scaleNormal)
             cell?.progress = 0
-            cell?.setLabelFontSize(size: 15)
         }
         return cell!
     }

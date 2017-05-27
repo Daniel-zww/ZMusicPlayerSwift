@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// 歌词处理管理类
 class ZLyricModelTool: NSObject {
     /**
      *  根据歌词名称,解析歌词

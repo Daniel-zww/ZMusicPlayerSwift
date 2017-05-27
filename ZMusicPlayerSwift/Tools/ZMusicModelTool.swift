@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// 获取歌曲列表管理类
 class ZMusicModelTool: NSObject {
     /**
      *  加载本地设置的音乐配置文件

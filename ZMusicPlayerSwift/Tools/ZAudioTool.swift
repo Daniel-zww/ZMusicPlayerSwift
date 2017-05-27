@@ -9,6 +9,7 @@
 import UIKit
 import AVFoundation
 
+/// 播放器管理类
 class ZAudioTool: NSObject, AVAudioPlayerDelegate {
     
     /// 播放器对象
@@ -80,6 +81,13 @@ class ZAudioTool: NSObject, AVAudioPlayerDelegate {
      */
     func startAudio() {
         self.currentPlayer?.play()
+    }
+    /**
+     *  设置倍率播放
+     */
+    func setPlayRate(rate: Float) {
+        self.currentPlayer?.enableRate = true
+        self.currentPlayer?.rate = rate
     }
     /**
      *  暂停当前正在播放的音乐

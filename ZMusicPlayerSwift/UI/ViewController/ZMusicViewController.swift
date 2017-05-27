@@ -146,14 +146,14 @@ class ZMusicViewController: ZBaseViewController, UIScrollViewDelegate {
         self.topView?.snp.removeConstraints()
         self.topView?.snp.makeConstraints({[weak self] (make) in
             if self != nil {
-                make.height.equalTo(70)
+                make.height.equalTo(85)
                 make.left.top.right.equalTo(self!.visualEffectView!).offset(0)
             }
         })
         self.bottomView?.snp.removeConstraints()
         self.bottomView?.snp.makeConstraints({[weak self] (make) in
             if self != nil {
-                make.height.equalTo(130)
+                make.height.equalTo(120)
                 make.left.right.equalTo(self!.visualEffectView!).offset(0)
                 make.bottom.equalTo(self!.visualEffectView!.snp.bottom).offset(0)
             }
@@ -205,9 +205,6 @@ class ZMusicViewController: ZBaseViewController, UIScrollViewDelegate {
             }
         })
         // MiddleView
-        
-        self.setViewDynamicConstraints()
-        
         self.lrcLabel?.snp.removeConstraints()
         self.lrcLabel?.snp.makeConstraints ({[weak self] (make) in
             if self != nil {
@@ -341,6 +338,7 @@ extension ZMusicViewController {
     }
     func innerMiddleView() {
         self.middleView = UIView()
+        self.middleView?.clipsToBounds = false
         self.visualEffectView?.contentView.addSubview(self.middleView!)
         
         self.iconImageView = UIImageView(image: UIImage(named: "dzq.jpg"))

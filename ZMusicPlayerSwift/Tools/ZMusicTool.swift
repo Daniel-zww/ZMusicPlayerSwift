@@ -9,6 +9,7 @@
 import UIKit
 import MediaPlayer
 
+/// 歌曲播放操作类
 class ZMusicTool: NSObject {
     
     /// 设置播放器
