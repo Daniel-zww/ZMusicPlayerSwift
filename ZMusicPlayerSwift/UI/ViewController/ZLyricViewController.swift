@@ -35,7 +35,7 @@ class ZLyricViewController: UITableViewController {
             let oldCell = self.tableView.cellForRow(at: oldIndexpath) as? ZLyricTVC
             oldCell?.addAnimation(animationType: .scaleNormal)
             oldCell?.progress = 0
-            self.tableView.scrollToRow(at: indexPath, at: .middle, animated: true)
+            self.tableView.scrollToRow(at: indexPath, at: .top, animated: true)
         }
     }
     /// 根据外界传递过来的歌词进度, 展示歌词进度

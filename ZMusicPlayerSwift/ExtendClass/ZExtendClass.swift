@@ -350,7 +350,8 @@ extension UIColor {
         self.init(red: CGFloat(r)/255, green: CGFloat(g)/255, blue: CGFloat(b)/255, alpha: 1)
     }
 }
-
+/// 动画时间
+fileprivate let animationDuration: CFTimeInterval = 0.5
 /// 扩展TVC
 extension UITableViewCell {
     /// 添加动画
@@ -360,14 +361,14 @@ extension UITableViewCell {
             layer.removeAnimation(forKey: "translation")
             let animation = CAKeyframeAnimation(keyPath: "transform.translation.x")
             animation.values = [50, 0, 50, 0];
-            animation.duration = 0.7
+            animation.duration = animationDuration
             animation.repeatCount = 1
             layer.add(animation, forKey: "translation")
         case .scale:
             layer.removeAnimation(forKey: "scale")
             let animation = CAKeyframeAnimation(keyPath: "transform.scale.x")
             animation.values = [0.5, 1.0];
-            animation.duration = 0.7
+            animation.duration = animationDuration
             animation.repeatCount = 1
             animation.timingFunctions = [CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)];
             layer.add(animation, forKey: "scale")
@@ -375,14 +376,14 @@ extension UITableViewCell {
             layer.removeAnimation(forKey: "rotation")
             let animation = CAKeyframeAnimation(keyPath: "transform.rotation.z")
             animation.values = [-1 / 6 * Double.pi , 0 , 1 / 6 * Double.pi , 0];
-            animation.duration = 0.7
+            animation.duration = animationDuration
             animation.repeatCount = 1
             layer.add(animation, forKey: "rotation")
         case .scaleAlways :
             layer.removeAnimation(forKey: "scale")
             let animation = CAKeyframeAnimation(keyPath: "transform.scale.x")
-            animation.values = [1.0, 1.2];
-            animation.duration = 0.7
+            animation.values = [1.0, 1.25];
+            animation.duration = animationDuration
             animation.repeatCount = 1
             animation.timingFunctions = [CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)];
             animation.isRemovedOnCompletion = false
@@ -392,7 +393,7 @@ extension UITableViewCell {
             layer.removeAnimation(forKey: "scale")
             let animation = CAKeyframeAnimation(keyPath: "transform.scale.x")
             animation.autoreverses = true
-            animation.duration = 0.7
+            animation.duration = animationDuration
             animation.repeatCount = 1
             animation.timingFunctions = [CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)];
             layer.add(animation, forKey: "scale")

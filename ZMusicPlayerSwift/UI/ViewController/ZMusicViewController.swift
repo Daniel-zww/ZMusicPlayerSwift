@@ -420,7 +420,7 @@ extension ZMusicViewController {
     /// 负责更新进度等信息的timer
     func innerInitTimer() {
         if self.updateTimer == nil {
-            self.updateTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(setMusicChangeMany), userInfo: nil, repeats: true)
+            self.updateTimer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(setMusicChangeMany), userInfo: nil, repeats: true)
             RunLoop.current.add(self.updateTimer!, forMode: RunLoopMode.commonModes)
         }
     }
@@ -428,6 +428,11 @@ extension ZMusicViewController {
     func innerInitLink() {
         if self.updateLrcLink == nil {
             self.updateLrcLink = CADisplayLink(target: self, selector: #selector(setMusicPlayLyricChange))
+            if #available(iOS 10.0, *) {
+                self.updateLrcLink?.preferredFramesPerSecond = 1
+            } else {
+                self.updateLrcLink?.frameInterval = 1
+            }
             self.updateLrcLink?.add(to: RunLoop.current, forMode: RunLoopMode.commonModes)
         }
     }
